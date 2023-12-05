@@ -54,6 +54,7 @@ func stringToStruct(input string) toDoItem {
 
 // exec all cmd
 func Execute() {
+  hello := "Welcome to a simple To-Do CLI. Dev by Nazhard. \ntry type todo -v"
   version := "1.0.0"
 
   if _, err := os.Stat(homeDir+"/.todo-cache"); err == nil {
@@ -68,6 +69,10 @@ func Execute() {
   }
 
   numberOfArguments := len(os.Args) - 1
+
+  if len(os.Args) == 1 {
+    fmt.Println(hello)
+  }
 
   // exec command that have not args
   if numberOfArguments == 1 {
