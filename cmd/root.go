@@ -5,7 +5,6 @@ import (
   "io/ioutil"
   "os"
   "strings"
-  "time"
 )
 
 type toDoItem struct {
@@ -88,11 +87,7 @@ func Execute() {
   // exec command that have Args
   if numberOfArguments == 2 {
     if os.Args[1] == "-a" {
-      ti := time.Now()
-      t.op = os.Args[2]
-      t.completed = "f"
-      t.date = ti.Format("02-01-2006")
-      toDoList = append(toDoList, t)
+      add()
     } else if os.Args[1] == "-m" {
       mark()
     } else if os.Args[1] == "-d" {
