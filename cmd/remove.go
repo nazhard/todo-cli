@@ -23,6 +23,6 @@ func deleteItem() {
 
   toDoList = remove(toDoList, i)
   if len(toDoList) == 0 {
-    ioutil.WriteFile("cache", toByteConverter(toDoList), 0666)
+    ioutil.WriteFile(homeDir+"/.todo-cache", toByteConverter(toDoList), 0666)
   }
 }

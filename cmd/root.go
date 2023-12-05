@@ -16,6 +16,7 @@ type toDoItem struct {
 var (
   toDoList []toDoItem
   t toDoItem
+  homeDir, _ = os.UserHomeDir()
 )
 
 func toByteConverter(input []toDoItem) []byte {
@@ -55,8 +56,8 @@ func stringToStruct(input string) toDoItem {
 func Execute() {
   version := "1.0.0"
 
-  if _, err := os.Stat("cache"); err == nil {
-    byteCorbasi, _ := ioutil.ReadFile("cache")
+  if _, err := os.Stat(homeDir+"/.todo-cache"); err == nil {
+    byteCorbasi, _ := ioutil.ReadFile(homeDir+"/.todo-cache")
     listOfStructs := strings.Split(string(byteCorbasi), "/")
 
     for _, st := range listOfStructs {
@@ -99,6 +100,6 @@ func Execute() {
 
   // if it isn't 0, write a file to store toDoItem
   if len(toDoList) != 0 {
-    ioutil.WriteFile("cache", toByteConverter(toDoList), 0666)
+    ioutil.WriteFile(homeDir+"/.todo-cache", toByteConverter(toDoList), 0666)
   }
 }
