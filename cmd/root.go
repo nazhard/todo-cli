@@ -71,13 +71,13 @@ func Execute() {
 
   // exec command that have not args
   if numberOfArguments == 1 {
-    if os.Args[1] == "-v" {
+    if os.Args[1] == "-v" || os.Args[1] == "version" {
       fmt.Println(version)
-    } else if os.Args[1] == "-h" {
+    } else if os.Args[1] == "-h" || os.Args[1] == "help"{
       printHelp()
-    } else if os.Args[1] == "-l" {
+    } else if os.Args[1] == "-l" || os.Args[1] == "list" {
       currentList()
-    } else if os.Args[1] == "-c" {
+    } else if os.Args[1] == "-c" || os.Args[1] == "complete" {
       completedList()
     } else {
       fmt.Println("Command you typed in doesn't exist")
@@ -87,11 +87,11 @@ func Execute() {
 
   // exec command that have Args
   if numberOfArguments == 2 {
-    if os.Args[1] == "-a" {
+    if os.Args[1] == "-a" || os.Args[1] == "add"{
       add()
-    } else if os.Args[1] == "-m" {
+    } else if os.Args[1] == "-m" || os.Args[1] == "mark" {
       mark()
-    } else if os.Args[1] == "-d" {
+    } else if os.Args[1] == "-d" || os.Args[1] == "delete" {
       deleteItem()
     } else {
       fmt.Println("Please enter todo -h for available commands.")

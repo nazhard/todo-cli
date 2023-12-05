@@ -7,13 +7,23 @@ func printHelp() {
 ------------------------------------------------------
          A Simple To Do
 ------------------------------------------------------
-    -h          | list available commands
-    -c          | list completed tasks
-    -l          | list uncompleted tasks
-    -v          | show version (it's good to chec          k your program)
-    -a  <item>  | add <item> to list
-    -m  <ID>    | mark item with <id> as complete
-    -d  <ID>    | delete item with <id>
-------------------------------------------------------
+
+[USAGE]
+
+  todo [COMMANDS] | [ITEM]
+
+[COMMANDS]
+
+  -h | help               | print this help message
+  -c | complete           | list completed tasks
+  -l | list               | list uncompleted tasks
+  -v | version            | show version
+  -a <item> | add <item>  | add <item> to list
+  -m <id>   | mark <id>   | mark item with <id> as complete
+  -d <id>   | delete <id> | delete item with <id>
+
+[EXAMPLE]
+
+  todo -v | todo add "simple task"
   `)
 }
