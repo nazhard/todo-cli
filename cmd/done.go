@@ -6,7 +6,7 @@ import (
   "strconv"
 )
 
-func mark() {
+func done() {
   i, err := strconv.Atoi(os.Args[2])
   if err != nil {
     // handle error

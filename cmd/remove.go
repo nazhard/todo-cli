@@ -11,7 +11,7 @@ func remove(slice []toDoItem, s int) []toDoItem {
   return append(slice[: s], slice[s+1:]...)
 }
 
-func deleteItem() {
+func removeItem() {
   i, err := strconv.Atoi(os.Args[2])
   if err != nil {
     // handle error

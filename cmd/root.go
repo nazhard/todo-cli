@@ -94,10 +94,10 @@ func Execute() {
   if numberOfArguments == 2 {
     if os.Args[1] == "-a" || os.Args[1] == "add"{
       add()
-    } else if os.Args[1] == "-m" || os.Args[1] == "mark" {
-      mark()
-    } else if os.Args[1] == "-d" || os.Args[1] == "delete" {
-      deleteItem()
+    } else if os.Args[1] == "-d" || os.Args[1] == "done" {
+      done()
+    } else if os.Args[1] == "-r" || os.Args[1] == "remove" {
+      removeItem()
     } else {
       fmt.Println("Please enter todo -h for available commands.")
     }

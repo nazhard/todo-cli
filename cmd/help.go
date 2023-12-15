@@ -19,8 +19,8 @@ func printHelp() {
   -l | list               | list uncompleted tasks
   -v | version            | show version
   -a <item> | add <item>  | add <item> to list
-  -m <id>   | mark <id>   | mark item with <id> as complete
-  -d <id>   | delete <id> | delete item with <id>
+  -d <id>   | done <id>   | mark item with <id> as completed
+  -r <id>   | remove <id> | remove item with <id>
 
 [EXAMPLE]
 
