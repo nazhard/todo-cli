@@ -54,11 +54,11 @@ func stringToStruct(input string) toDoItem {
 
 // exec all cmd
 func Execute() {
-  hello := "Welcome to a simple To-Do CLI. Dev by Nazhard. \ntry type todo -v"
+  hello := "Welcome to a simple To-Do CLI. Dev by Nazhard. \ntry type todo help"
   version := "1.0.0"
 
-  if _, err := os.Stat(homeDir+"/.todo-cache"); err == nil {
-    byteCorbasi, _ := ioutil.ReadFile(homeDir+"/.todo-cache")
+  if _, err := os.Stat(homeDir+"/.todo"); err == nil {
+    byteCorbasi, _ := ioutil.ReadFile(homeDir+"/.todo")
     listOfStructs := strings.Split(string(byteCorbasi), "/")
 
     for _, st := range listOfStructs {
@@ -76,35 +76,35 @@ func Execute() {
 
   // exec command that have not args
   if numberOfArguments == 1 {
-    if os.Args[1] == "-v" || os.Args[1] == "version" {
+    if os.Args[1] == "v" || os.Args[1] == "version" {
       fmt.Println(version)
-    } else if os.Args[1] == "-h" || os.Args[1] == "help"{
+    } else if os.Args[1] == "h" || os.Args[1] == "help"{
       printHelp()
-    } else if os.Args[1] == "-l" || os.Args[1] == "list" {
+    } else if os.Args[1] == "l" || os.Args[1] == "list" {
       currentList()
-    } else if os.Args[1] == "-c" || os.Args[1] == "complete" {
+    } else if os.Args[1] == "c" || os.Args[1] == "complete" {
       completedList()
     } else {
       fmt.Println("Command you typed in doesn't exist")
-      fmt.Println("Please enter todo -h for available commands.")
+      fmt.Println("Please enter \"todo help\" for available commands.")
     }
   }
 
   // exec command that have Args
   if numberOfArguments == 2 {
-    if os.Args[1] == "-a" || os.Args[1] == "add"{
+    if os.Args[1] == "a" || os.Args[1] == "add"{
       add()
-    } else if os.Args[1] == "-d" || os.Args[1] == "done" {
+    } else if os.Args[1] == "d" || os.Args[1] == "done" {
       done()
-    } else if os.Args[1] == "-r" || os.Args[1] == "remove" {
+    } else if os.Args[1] == "r" || os.Args[1] == "remove" {
       removeItem()
     } else {
-      fmt.Println("Please enter todo -h for available commands.")
+      fmt.Println("Please enter \"todo help\" for available commands.")
     }
   }
 
   // if it isn't 0, write a file to store toDoItem
   if len(toDoList) != 0 {
-    ioutil.WriteFile(homeDir+"/.todo-cache", toByteConverter(toDoList), 0666)
+    ioutil.WriteFile(homeDir+"/.todo", toByteConverter(toDoList), 0666)
   }
 }
