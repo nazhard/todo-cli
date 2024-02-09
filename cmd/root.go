@@ -54,8 +54,8 @@ func stringToStruct(input string) toDoItem {
 
 // exec all cmd
 func Execute() {
-  hello := "Welcome to a simple To-Do CLI. Dev by Nazhard. \ntry type todo help"
-  version := "1.0.0"
+  hello := "Welcome to a simple To-Do CLI. \ntry type todo help"
+  version := "0.0.1"
 
   if _, err := os.Stat(homeDir+"/.todo"); err == nil {
     byteCorbasi, _ := ioutil.ReadFile(homeDir+"/.todo")
@@ -68,37 +68,39 @@ func Execute() {
     }
   }
 
-  numberOfArguments := len(os.Args) - 1
+  args := len(os.Args) - 1
 
   if len(os.Args) == 1 {
     fmt.Println(hello)
   }
 
   // exec command that have not args
-  if numberOfArguments == 1 {
-    if os.Args[1] == "v" || os.Args[1] == "version" {
+  if args == 1 {
+    switch os.Args[1] {
+    case "v", "version":
       fmt.Println(version)
-    } else if os.Args[1] == "h" || os.Args[1] == "help"{
+    case "h", "help":
       printHelp()
-    } else if os.Args[1] == "l" || os.Args[1] == "list" {
+    case "l", "list":
       currentList()
-    } else if os.Args[1] == "c" || os.Args[1] == "complete" {
+    case "c", "complete":
       completedList()
-    } else {
+    default:
       fmt.Println("Command you typed in doesn't exist")
       fmt.Println("Please enter \"todo help\" for available commands.")
     }
   }
 
   // exec command that have Args
-  if numberOfArguments == 2 {
-    if os.Args[1] == "a" || os.Args[1] == "add"{
+  if args == 2 {
+    switch os.Args[1] {
+    case "a", "add":
       add()
-    } else if os.Args[1] == "d" || os.Args[1] == "done" {
-      done()
-    } else if os.Args[1] == "r" || os.Args[1] == "remove" {
+    case "r", "remove" :
       removeItem()
-    } else {
+    case "d", "done" :
+      done()
+    default:
       fmt.Println("Please enter \"todo help\" for available commands.")
     }
   }
